@@ -1,0 +1,28 @@
+---
+title: "HTTT"
+author: "skammlade"
+date: "20 March 2016"
+output: html_document
+---
+
+This is a report on participation in the Horsetooth Time Trial Series from 2011-2015 (data taken from Your Group Ride [google docs][https://docs.google.com/spreadsheets/d/1dNnqC5YTzURecVyo8U4a_RAv-KwQoJtCwnjseIOjg1g/pub?output=html])
+
+<iframe height='405' width='590' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/segments/1213731/embed'></iframe>
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+```{r, echo=FALSE}
+
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
