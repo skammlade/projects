@@ -10,7 +10,7 @@ df <- data.frame(table(HTTT$Year,HTTT$Week,HTTT$Sex))
 #barplot
 p <- ggplot(df, aes(x=Var2, y=Freq, fill=Var3))
 p <- p + geom_bar(stat="identity")
-p <- p +facet_wrap(~Var1,nrow=1)
+p <- p +facet_wrap(~Var1, nrow=1)
 p
 
 #plot theme
