@@ -5,11 +5,9 @@ require(ggplot2)
 require(cowplot)
 
 #create dataframe using only year and sex variables
-## @knitr variabledf
 df<-data.frame(table(HTTT$Year,HTTT$Sex))
 
 #barplot
-## @knitr plotp
 p <- ggplot(df, aes(Var1, Freq, group=Var2,fill=Var2))
 p <- p + geom_bar(width=0.75, 
                   position=position_dodge(width=0.78),
