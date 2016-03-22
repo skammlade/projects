@@ -1,27 +1,29 @@
 #load required packages
 library(ggplot2)
-attach(HTTT)
+#attach(HTTT)
 
 #create datafram with year, week, sex, and division variables
-df <- data.frame(table(HTTT$Year,HTTT$Week,HTTT$Sex,HTTT$Division))
+df <- data.frame(table(HTTT$Year,HTTT$Week,HTTT$Sex))
 
-#table with counts of all variables https://www.quora.com/How-do-I-get-a-frequency-count-based-on-two-columns-variables-in-an-R-dataframe
+#table with counts of all variables
 require(plyr)
-Counts<-data.frame(table(HTTT$Year,HTTT$Sex,HTTT$Week,HTTT$Division))
+Counts<-data.frame(table(HTTT$Year,HTTT$Sex,HTTT$Week))
+
+#plots of each year in one image
+require(cowplot)
+p <- ggplot(df, aes(x=Var2, y=Freq, fill=Var3))
+p <- p + geom_bar(stat="identity")
+p <- p +facet_wrap(~Var1,nrow=1)
+p
 
 # create new datasets for each year
-attach(HTTP)
+#attach(HTTP)
 Year2011<-subset(Counts,Var1=="2011",select=Var1:Freq)
 Year2012<-subset(Counts,Var1=="2012",select=Var1:Freq)
 Year2013<-subset(Counts,Var1=="2013",select=Var1:Freq)
 Year2014<-subset(Counts,Var1=="2014",select=Var1:Freq)
 Year2015<-subset(Counts,Var1=="2015",select=Var1:Freq)
 
-#plots of each year in one image
-require(cowplot)
-p <- ggplot(df, aes(x=Var3, y=Freq, fill=Var2))
-p <- p + geom_bar(stat="identity")
-p <- p +facet_wrap(~Var1,nrow=1)
 
 
 
