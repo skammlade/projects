@@ -99,7 +99,7 @@ wp <- wp + labs(y="Temperature",
 #remove legend title
 wp <- wp + guides(fill=guide_legend(title=NULL))
 
-#set bar colors
+#set bar colors 
 wp <- wp + scale_fill_manual(values=c("firebrick4")) 
 
 print(wp)
