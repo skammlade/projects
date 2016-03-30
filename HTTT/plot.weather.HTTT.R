@@ -60,7 +60,7 @@ p <- p + scale_y_continuous(limits=c(0,ylim))
 p <- p + scale_fill_manual(labels=c("Women","Men"),
                            values=c("firebrick4","gray25")) 
 
-print(p)
+p
 
 #create dataframe using only year, week, and temp variables
 weather.vars <- c("Year", "Week", "Temp")
