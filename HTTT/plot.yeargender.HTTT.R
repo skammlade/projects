@@ -1,5 +1,7 @@
 attach(HTTT)
 
+HTTT <- read.table("HTTT.csv",sep=",",header=TRUE)
+HTTT
 #load required packages
 require(ggplot2)
 require(cowplot)
@@ -33,12 +35,13 @@ p <- p + theme(plot.title=element_text(family="Helvetica",
                                         size=18), 
                legend.text=element_text(size=18, 
                                         face="bold"), 
-               plot.margin=unit(c(0.5,0.5,0.5,0.5), "cm"))
+               plot.margin=unit(c(0.5,0.5,0.5,0.5), "cm"),
+               axis.ticks.x=element_blank())
 
 #y axis title, plot title
-p <- p + labs(y="Attendance", 
+p <- p + labs(y="# Racers", 
               x=NULL, 
-              title="Horsetooth Time Trial Series")
+              title=NULL)
 
 #create value labels in bar
 p <- p + geom_text(data=subset(df,Freq !=0),
@@ -54,7 +57,7 @@ p <- p + guides(fill=guide_legend(title=NULL))
 
 #set y axis limits
 ylim=trunc(max(df$Freq)+10)
-p <- p + scale_y_continuous(limits=c(0,ylim))
+p <- p + scale_y_continuous(limits=c(0,ylim),expand=c(0,0))
 
 #set bar colors
 p <- p + scale_fill_manual(labels=c("Women","Men"),

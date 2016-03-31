@@ -1,21 +1,27 @@
 ---
-title: "HTTT"
-author: "skammlade"
-date: "20 March 2016"
+title: "YGR Horsetooth Time Trial Series"
+author: "sara"
+date: "31 March 2016"
 output: html_document
 ---
-
-This is a report on participation in the Horsetooth Time Trial Series from 2011-2015 (data taken from Your Group Ride [google docs](https://docs.google.com/spreadsheets/d/1dNnqC5YTzURecVyo8U4a_RAv-KwQoJtCwnjseIOjg1g/pub?output=html))
-
-
-
-
+![HTdams](https://raw.githubusercontent.com/skammlade/skammlade.github.io/master/images/dams_handlebar.jpg)
+<br>
+<br>
+Fort Collins, CO is home to a thriving grassroots racing scene. Your Group Ride hosts an annual time trial every Tuesday in April known as the [Horsetooth Time Trial Series](http://yourgroupride.com/index.php/local-races/horsetooth-time-trial-series). The hilly 14.35 mile course runs along Horsetooth Reservoire and Horsetooth Mountain Park climbing a total of 1,336 feet.
+<br>
+<br>
+<iframe style="width:100%;height:600px;" src="https://veloviewer.com/segments/1213731/embed2" frameborder="0" scrolling="no"></iframe>  
+<br>
+<br>
+I wanted to see how the racer turnout compared between men versus women so I plotted race data from 2011-2015. 2015 was the best turnout for female cyclsts so far with 34 total racers.
+![Gender turnout](https://raw.githubusercontent.com/skammlade/skammlade.github.io/master/images/plot.yeargender.HTTT.png)
 ```{r}
 #summary(df)
 ```
 
-```{r, echo=FALSE}
-read_chunk('plot.yeargender.HTTT.R')
+```{r}
+HTTT <- read.table("HTTT.comb.csv",sep=",",header=TRUE)
+HTTT
 ```
 
 
@@ -35,3 +41,5 @@ plot(cars)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+This is a report on participation in the Horsetooth Time Trial Series from 2011-2015 (data taken from Your Group Ride [google docs](https://docs.google.com/spreadsheets/d/1dNnqC5YTzURecVyo8U4a_RAv-KwQoJtCwnjseIOjg1g/pub?output=html))
