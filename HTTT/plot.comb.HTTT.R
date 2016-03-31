@@ -1,13 +1,33 @@
-attach(HTTT_riders)
-attach(HTTT.weather)
+attach(HTTT.comb)
+
 #load required packages
 require(ggplot2)
 require(cowplot)
 
 #create dataframe using only year and sex variables
-df <- data.frame(table(HTTT_riders$Year,
-                       HTTT_riders$Week,
-                       HTTT_riders$Sex))
+ridervars <- c("Date", "Year", "Week", "Sex", "Freq")
+df <- subset(HTTT.comb, select=-c(ridervars))
+df
+
+df <- data.frame(x=HTTT.comb$Date, y=HTTT.comb$Freq)
+
+weathvars <- c("Date", "Year", "Week", "Sex", "Freq", "Temp")
+dfw <- HTTT.comb[weathvars]
+dfw
+
+with(df, tapply(Temp, Date, mean))
+
+df_all <- data.frame(Date = factor(levels(df$Date)))
+df_all$bar_heights <- with(df, tapply(Freq, Date, sum))
+df_all$line_y <- with(dfw, tapply(Temp, Date, mean))
+
+p <- ggplot(df, aes(x=Week, y=Freq)) 
+p <- p + geom_bar()
+p <- p + geom_line(data=dfw, x=Week, y=Temp)
+p <- p + facet_wrap(~Year, nrow=1)
+p
+
+aes(x = as.numeric(Week), y = line_y))
 
 #create dataframe using only year, week, and temp variables
 weather.vars <- c("Year", "Week", "Temp")
@@ -19,6 +39,8 @@ p <- ggplot(df[which(df$Freq>0),], aes(x=Var2, y=Freq, fill=Var3))
 
 #barplot
 p <- p + geom_bar(stat="identity")
+p <- ggplot(wdf, aes(x=Week, y=Temp))
+p
 p <- p + facet_wrap(~Var1, nrow=1, scales="free_x")
 
 #plot theme
@@ -51,20 +73,15 @@ p <- p + labs(y="Attendance",
               x=NULL, 
               title="Horsetooth Time Trial Series\n")
 
-labels <- c("a","b","c", "d","e","f","g","a","b","c", "d","e","f","g","a","b","c", "d","e","f","g","a","b","c", "d","e","f","g","a","b","c", "d","e","f","g","a","b","c", "d","e","f","g")
-
-heights <- c(1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2)
-
 #create value labels in bar
-p <- p + geom_text(#label=labels,
-                   position="stack",
-                   #data=subset(df,Freq !=0),
-                   aes(label=labels, y=heights), 
-                   #position=position_dodge(width=0.05), 
-                   #vjust=1, 
-                   size=6, 
-                   family="Helvetica",
-                   color="orange")
+#p <- p + geom_text(position="stack",
+#data=subset(df,Freq !=0),
+#aes(label=Freq, y=Freq), 
+#position=position_dodge(width=0.05), 
+#vjust=1, 
+#size=6, 
+#family="Helvetica",
+#color="white")
 
 #remove legend title
 p <- p + guides(fill=guide_legend(title=NULL))
@@ -94,27 +111,27 @@ wp <- wp + facet_wrap(~Year, nrow=1, scales="free_x")
 
 #plot theme
 wp <- wp + theme(plot.title=element_text(family="Helvetica", 
-                                       face="bold", 
-                                       size=36, 
-                                       color="firebrick4", 
-                                       vjust=20), 
-               axis.text.x=element_text(family="Helvetica", 
-                                        face="bold",
-                                        size=18),
-               axis.title.y=element_text(margin=margin(0,17,0,0), 
-                                         family="Helvetica", 
-                                         face="bold",
-                                         size=24),
-               axis.text.y=element_text(family="Helvetica", 
-                                        face="bold",
-                                        size=18), 
-               legend.text=element_text(size=18, 
-                                        face="bold"), 
-               plot.margin=unit(c(0.5,0.5,0.5,0.5), "cm"))
+                                         face="bold", 
+                                         size=36, 
+                                         color="firebrick4", 
+                                         vjust=20), 
+                 axis.text.x=element_text(family="Helvetica", 
+                                          face="bold",
+                                          size=18),
+                 axis.title.y=element_text(margin=margin(0,17,0,0), 
+                                           family="Helvetica", 
+                                           face="bold",
+                                           size=24),
+                 axis.text.y=element_text(family="Helvetica", 
+                                          face="bold",
+                                          size=18), 
+                 legend.text=element_text(size=18, 
+                                          face="bold"), 
+                 plot.margin=unit(c(0.5,0.5,0.5,0.5), "cm"))
 
 #y axis title, plot title
 wp <- wp + labs(y="Temperature", 
-              x=NULL)
+                x=NULL)
 
 #remove legend title
 wp <- wp + guides(fill=guide_legend(title=NULL))
