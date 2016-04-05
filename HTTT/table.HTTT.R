@@ -15,3 +15,20 @@ m.eddy <- HTTT[which(HTTT$Year>'2011' & HTTT$Sex=='Male' & HTTT$Division=='Eddy'
 m.kerkove <- HTTT[which(HTTT$Year>'2011' & HTTT$Sex=='Male' & HTTT$Division=='Kerkove'), ]
 
 head(f.aero, 5)
+head(f.eddy, 5)
+head(f.kerkove, 5)
+
+library(ascii)
+print(ascii(head(iris[,1:3])), type = 'pandoc')
+
+
+
+**Sepal.Length**   **Sepal.Width**   **Petal.Length**  
+  --- ------------------ ----------------- ------------------
+  1   5.10               3.50              1.40              
+2   4.90               3.00              1.40              
+3   4.70               3.20              1.30              
+4   4.60               3.10              1.50              
+5   5.00               3.60              1.40              
+6   5.40               3.90              1.70              
+--- ------------------ ----------------- ------------------

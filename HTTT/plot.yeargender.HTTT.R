@@ -35,9 +35,7 @@ p <- p + theme(plot.title=element_text(family="Helvetica",
 
 #y axis title, plot title
 p <- p + labs(y="# Racers", 
-              x=NULL, 
-              title="Horsetooth Time Trial Series")
-
+              x=NULL)
 #create value labels in bar
 p <- p + geom_text(data=subset(df,Freq !=0),
                    aes(label=Freq), 
