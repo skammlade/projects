@@ -1,4 +1,4 @@
-KnitPost <- function(site.path='/GitHub/Blog/_posts', overwriteAll=F, overwriteOne=NULL) {
+KnitPost <- function(site.path='/GitHub/Blog/_posts/', overwriteAll=F, overwriteOne=NULL) {
   if(!'package:knitr' %in% search()) library('knitr')
   
   ## Blog-specific directories.  This will depend on how you organize your blog.
