@@ -1,0 +1,10 @@
+```{r, setup, echo=FALSE}
+require(knitr)
+opts_chunk$set(echo=FALSE, cache=FALSE)
+read_chunk('plot.yeargender.HTTT.R')
+```
+## ---- chunkname ----
+
+
+```{r chunkname, echo=FALSE}
+```
