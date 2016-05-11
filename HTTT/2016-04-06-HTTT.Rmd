@@ -16,13 +16,13 @@ Fort Collins, CO is home to a thriving grassroots racing scene. Your Group Ride 
 <br>
 <br>
 <br>
-I wanted to see how the racer turnout compared between men versus women so I plotted race data from 2011-2015. Last year had the greatest turnout for female cyclsts so far with **34 racers** representing **21.25%** of total racers.
+I wanted to see how the racer turnout compared between men versus women so I plotted race data from 2011-2015. Last year had the greatest turnout for female cyclsts so far with **34 racers** representing **17.5%** of total racers.
 
 ```{r fig.width = 8, fig.height=4, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
 source('plot.yeargender.HTTT.R')
 ```
 <br>
-I thought it was a little strange that 2013 had such a low showing. I pulled some temperature data from [WeatherUnderground](https://www.wunderground.com/cgi-bin/findweather/getForecast?query=pws:KCOFORTC71) for each date during the race time and found it was rideable weather for all of the races!
+I thought it was a little strange that 2013 had such a low showing so I pulled some temperature data from [WeatherUnderground](https://www.wunderground.com/cgi-bin/findweather/getForecast?query=pws:KCOFORTC71) for each week during the race time.
 <br>
 <br>
 <br>
@@ -30,7 +30,6 @@ I thought it was a little strange that 2013 had such a low showing. I pulled som
 source('plot.weather.HTTT.R')
 p
 ```
-<br>
 
 ####Top 5 times from each category to date: 
 

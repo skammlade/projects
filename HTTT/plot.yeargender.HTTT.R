@@ -57,3 +57,4 @@ p <- p + scale_fill_manual(labels=c("Women","Men"),
                    values=c("firebrick4","gray25")) 
 
 print(p)
+
